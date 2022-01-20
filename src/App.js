@@ -1,13 +1,13 @@
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
-// import About from './components/About';
+import About from './components/About';
 import React, { useState } from 'react';
 import Alert from './components/Alert';
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 
 function App() {
@@ -38,21 +38,18 @@ function App() {
   }
   return (
     <>
-      {/* <Router>
-    <Switch>
-      {/* <Route exact path="/about">
-          </Route>
-          <Route exact path="/">
-          </Route>
-    </Switch> */}
-      {/* </Router> */} 
+      <Router>
         <Navbar title="TextPlayer" mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />
-
-      <div className="container my-3">
-        <TextForm showAlert={showAlert} heading="Try TextPlayer - word counter, character counter, remove extra spaces" mode={mode} />
-        {/* <About mode={mode} /> */}
-      </div>
+        <Switch>
+          <div className="container my-3">
+            <Route exact path="/"><TextForm showAlert={showAlert} heading="Try TextPlayer - word counter, character counter, remove extra spaces" mode={mode} />
+            </Route>
+            <Route exact path="/about"><About mode={mode} />
+            </Route>
+          </div>
+        </Switch>
+      </Router>
     </>
   );
 }
